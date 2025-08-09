@@ -22,7 +22,7 @@ RUN pecl install redis && docker-php-ext-enable redis
 RUN pecl install xdebug && docker-php-ext-enable xdebug
 
 # Installer Composer (le gestionnaire de dépendances pour PHP)
-COPY --from=public.ecr.aws/docker/library/composer:2-alpine /usr/bin/composer /usr/bin/composer
+COPY --from=public.ecr.aws/docker/library/composer:latest /usr/bin/composer /usr/bin/composer
 
 # Créer un utilisateur non-root pour exécuter l'application
 RUN groupadd -g 1000 app && \
