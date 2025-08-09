@@ -1,5 +1,4 @@
 # Dockerfile pour l'environnement de développement PHP
-
 # Utiliser une image PHP-FPM basée sur Alpine
 FROM public.ecr.aws/ids/php:8.3-fpm-alpine
 
