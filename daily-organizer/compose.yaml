@@ -42,7 +42,7 @@ services:
       - app_network
 
   postgres:
-    image: public.ecr.aws/bitnami/postgresql:16-alpine
+    image: public.ecr.aws/bitnami/postgresql:16-debian-12
     container_name: daily_organizer_postgres
     ports:
       - "5432:5432"
