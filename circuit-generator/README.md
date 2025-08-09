@@ -40,7 +40,7 @@ Le projet est développé en JavaScript, avec la répartition suivante :
 
 3.  **Lancer le serveur** :
     ```bash
-    node src/server.js
+    npm start
     ```
 
 L'application sera ensuite accessible à l'adresse `http://localhost:3000` (ou le port défini dans `server.js`).
@@ -50,6 +50,11 @@ L'application sera ensuite accessible à l'adresse `http://localhost:3000` (ou l
     npm run lint
     npm test
     ```
+
+## API actuelle
+
+-   `GET /api/collection` : retourne la collection sauvegardée.
+-   `POST /api/collection` : remplace la collection sauvegardée par le corps de la requête.
 
 ## Documents de Projet
 
