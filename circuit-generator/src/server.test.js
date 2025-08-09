@@ -40,3 +40,18 @@ test('POST /api/collection stores collection', async () => {
   const data = await resGet.json();
   expect(data).toEqual({ curve: 2 });
 });
+
+test('POST /api/generate returns not implemented', async () => {
+  const res = await fetch(`${baseUrl}/api/generate`, { method: 'POST' });
+  expect(res.status).toBe(501);
+});
+
+test('GET /api/retrieve/:hash returns not implemented', async () => {
+  const res = await fetch(`${baseUrl}/api/retrieve/foo`);
+  expect(res.status).toBe(501);
+});
+
+test('POST /api/export/pdf returns not implemented', async () => {
+  const res = await fetch(`${baseUrl}/api/export/pdf`, { method: 'POST' });
+  expect(res.status).toBe(501);
+});

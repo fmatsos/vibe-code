@@ -55,6 +55,9 @@ L'application sera ensuite accessible à l'adresse `http://localhost:3000` (ou l
 
 -   `GET /api/collection` : retourne la collection sauvegardée.
 -   `POST /api/collection` : remplace la collection sauvegardée par le corps de la requête.
+-   `POST /api/generate` : génère un circuit (renvoie 501 tant que l'algorithme n'est pas implémenté).
+-   `GET /api/retrieve/:hash` : retrouve un circuit à partir de son hash (renvoie 501 pour le moment).
+-   `POST /api/export/pdf` : exporte le circuit en PDF (renvoie 501 pour le moment).
 
 ## Documents de Projet
 

@@ -23,9 +23,9 @@ Voici la liste des tâches à réaliser pour mener à bien le projet de généra
 -   [x] Créer des fonctions d'aide pour lire/écrire dans `database.json`.
 -   [x] Implémenter la route `GET /api/collection` pour lire la collection.
 -   [x] Implémenter la route `POST /api/collection` pour mettre à jour la collection.
--   [ ] Implémenter le squelette de la route `POST /api/generate`.
--   [ ] Implémenter le squelette de la route `GET /api/retrieve/:hash`.
--   [ ] Implémenter le squelette de la route `POST /api/export/pdf`.
+-   [x] Implémenter le squelette de la route `POST /api/generate`.
+-   [x] Implémenter le squelette de la route `GET /api/retrieve/:hash`.
+-   [x] Implémenter le squelette de la route `POST /api/export/pdf`.
 
 ## Phase 3 : Développement du Frontend (Interface Utilisateur)
 

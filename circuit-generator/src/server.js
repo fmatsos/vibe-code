@@ -19,6 +19,18 @@ app.post('/api/collection', async (req, res) => {
   res.json(await readCollection());
 });
 
+app.post('/api/generate', (req, res) => {
+  res.status(501).json({ error: 'Not implemented' });
+});
+
+app.get('/api/retrieve/:hash', (req, res) => {
+  res.status(501).json({ error: 'Not implemented' });
+});
+
+app.post('/api/export/pdf', (req, res) => {
+  res.status(501).json({ error: 'Not implemented' });
+});
+
 if (require.main === module) {
   const port = process.env.PORT || 3000;
   app.listen(port, () => {
