@@ -23,7 +23,7 @@ services:
       - app_network
 
   caddy:
-    image: caddy:2-alpine
+    image: public.ecr.aws/docker/library/caddy:2-alpine
     container_name: daily_organizer_caddy
     restart: unless-stopped
     ports:
@@ -42,7 +42,7 @@ services:
       - app_network
 
   postgres:
-    image: postgres:16-bookworm
+    image: public.ecr.aws/bitnami/postgresql:16
     container_name: daily_organizer_postgres
     ports:
       - "5432:5432"
@@ -56,7 +56,7 @@ services:
       - app_network
 
   redis:
-    image: redis:7-bookworm
+    image: public.ecr.aws/bitnami/redis:7
     container_name: daily_organizer_redis
     ports:
       - "6379:6379"
@@ -64,7 +64,7 @@ services:
       - app_network
 
   node:
-    image: node:20-bookworm
+    image: public.ecr.aws/docker/library/node:20-bookworm
     container_name: daily_organizer_node
     volumes:
       - ./:/app
