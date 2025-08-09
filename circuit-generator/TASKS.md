@@ -29,16 +29,16 @@ Voici la liste des tâches à réaliser pour mener à bien le projet de généra
 
 ## Phase 3 : Développement du Frontend (Interface Utilisateur)
 
--   [ ] Créer le fichier `public/index.html`.
--   [ ] Intégrer le fichier CSS compilé (`public/css/style.css`) dans `index.html`.
--   [ ] Créer le fichier `public/app.js` et le lier dans `index.html`.
--   [ ] Utiliser les composants DaisyUI pour construire la structure de la page (ex: `Card`, `Button`, `Input`).
--   [ ] Créer la section "Ma Collection" pour afficher les pièces de l'utilisateur.
--   [ ] Créer la section "Générer un circuit" avec un champ pour le nombre de pièces et un bouton.
--   [ ] Créer la section "Visualisation" qui contiendra le SVG du circuit.
--   [ ] Créer la section "Retrouver un circuit" avec un champ pour le hash et un bouton.
--   [ ] Dans `app.js`, implémenter la fonction pour fetcher et afficher la collection au chargement de la page.
--   [ ] Dans `app.js`, implémenter la logique pour envoyer la requête de génération à l'API.
+-   [x] Créer le fichier `public/index.html`.
+-   [x] Intégrer le fichier CSS compilé (`public/css/style.css`) dans `index.html`.
+-   [x] Créer le fichier `public/app.js` et le lier dans `index.html`.
+-   [x] Utiliser les composants DaisyUI pour construire la structure de la page (ex: `Card`, `Button`, `Input`).
+-   [x] Créer la section "Ma Collection" pour afficher les pièces de l'utilisateur.
+-   [x] Créer la section "Générer un circuit" avec un champ pour le nombre de pièces et un bouton.
+-   [x] Créer la section "Visualisation" qui contiendra le SVG du circuit.
+-   [x] Créer la section "Retrouver un circuit" avec un champ pour le hash et un bouton.
+-   [x] Dans `app.js`, implémenter la fonction pour fetcher et afficher la collection au chargement de la page.
+-   [x] Dans `app.js`, implémenter la logique pour envoyer la requête de génération à l'API.
 
 ## Phase 4 : Fonctionnalités Avancées
 

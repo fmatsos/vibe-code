@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Générateur de circuits</title>
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body class="p-4">
+  <h1 class="text-2xl font-bold mb-4">Générateur de circuits</h1>
+  <div class="grid gap-4">
+    <div class="card bg-base-100 shadow">
+      <div class="card-body">
+        <h2 class="card-title">Ma Collection</h2>
+        <form id="collection-form" class="flex flex-col gap-2"></form>
+        <div class="card-actions justify-end">
+          <button id="save-collection" class="btn btn-primary">Sauvegarder</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card bg-base-100 shadow">
+      <div class="card-body">
+        <h2 class="card-title">Générer un circuit</h2>
+        <div class="flex items-center gap-2">
+          <input id="pieces-count" type="number" min="1" class="input input-bordered w-32" placeholder="Nombre de pièces" />
+          <button id="generate-btn" class="btn btn-secondary">Générer</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card bg-base-100 shadow">
+      <div class="card-body">
+        <h2 class="card-title">Visualisation</h2>
+        <div id="visualization" class="border rounded p-2 min-h-48">
+          <svg id="circuit-svg" width="400" height="300"></svg>
+        </div>
+      </div>
+    </div>
+
+    <div class="card bg-base-100 shadow">
+      <div class="card-body">
+        <h2 class="card-title">Retrouver un circuit</h2>
+        <div class="flex items-center gap-2">
+          <input id="hash-input" type="text" class="input input-bordered flex-1" placeholder="Hash du circuit" />
+          <button id="retrieve-btn" class="btn">Retrouver</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="./app.js"></script>
+</body>
+</html>
