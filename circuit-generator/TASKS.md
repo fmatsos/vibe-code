@@ -4,26 +4,25 @@ Voici la liste des tâches à réaliser pour mener à bien le projet de généra
 
 ## Phase 1 : Initialisation et Fondations
 
--   [ ] Créer le fichier `package.json` avec `npm init -y`.
--   [ ] Installer les dépendances : `express`, `tailwindcss`, `daisyui`, `postcss`, `autoprefixer`.
--   [ ] Créer la structure de dossiers : `src/`, `public/`, `public/css/`.
--   [ ] Créer le fichier de configuration `tailwind.config.js`.
--   [ ] Configurer le plugin DaisyUI dans `tailwind.config.js`.
--   [ ] Créer le fichier `postcss.config.js`.
--   [ ] Créer le fichier `src/input.css` avec les directives `@tailwind`.
--   [ ] Ajouter un script `build:css` dans `package.json` pour compiler le CSS.
--   [ ] Créer le fichier `src/pieces.js` pour définir les structures de données des pièces.
--   [ ] Remplir `src/pieces.js` avec les pièces de base (droites, virages, etc.) après recherche.
+-   [x] Créer le fichier `package.json` avec `npm init -y`.
+-   [x] Installer les dépendances : `express`, `tailwindcss` v4, `daisyui`.
+-   [x] Créer la structure de dossiers : `src/`, `public/`, `public/css/`.
+-   [x] Créer le fichier de configuration `tailwind.config.js`.
+-   [x] Configurer le plugin DaisyUI dans `tailwind.config.js`.
+-   [x] Créer le fichier `src/input.css` avec les directives `@tailwind`.
+-   [x] Ajouter un script `build:css` dans `package.json` pour compiler le CSS.
+-   [x] Créer le fichier `src/pieces.js` pour définir les structures de données des pièces.
+-   [x] Remplir `src/pieces.js` avec les pièces de base (droites, virages, etc.) après recherche.
 
 ## Phase 2 : Développement du Backend (API)
 
--   [ ] Créer le fichier `src/server.js`.
--   [ ] Mettre en place un serveur Express de base dans `src/server.js`.
--   [ ] Configurer le serveur pour servir les fichiers statiques du dossier `public`.
--   [ ] Créer un fichier `database.json` pour le stockage de la collection.
--   [ ] Créer des fonctions d'aide pour lire/écrire dans `database.json`.
--   [ ] Implémenter la route `GET /api/collection` pour lire la collection.
--   [ ] Implémenter la route `POST /api/collection` pour mettre à jour la collection.
+-   [x] Créer le fichier `src/server.js`.
+-   [x] Mettre en place un serveur Express de base dans `src/server.js`.
+-   [x] Configurer le serveur pour servir les fichiers statiques du dossier `public`.
+-   [x] Créer un fichier `database.json` pour le stockage de la collection.
+-   [x] Créer des fonctions d'aide pour lire/écrire dans `database.json`.
+-   [x] Implémenter la route `GET /api/collection` pour lire la collection.
+-   [x] Implémenter la route `POST /api/collection` pour mettre à jour la collection.
 -   [ ] Implémenter le squelette de la route `POST /api/generate`.
 -   [ ] Implémenter le squelette de la route `GET /api/retrieve/:hash`.
 -   [ ] Implémenter le squelette de la route `POST /api/export/pdf`.
