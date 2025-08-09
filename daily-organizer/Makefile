@@ -30,17 +30,17 @@ help:
 
 start:
 	@echo "🚀 Démarrage des conteneurs..."
-	docker compose up -d --build
+	sudo docker compose up -d --build
 
 stop:
 	@echo "🛑 Arrêt des conteneurs..."
-	docker compose down
+	sudo docker compose down
 
 restart: stop start
 
 build:
 	@echo "🛠️ Reconstruction des images..."
-	docker compose build --no-cache
+	sudo docker compose build --no-cache
 
 
 # ==============================================================================
@@ -49,11 +49,11 @@ build:
 
 sh-php:
 	@echo "Connexion au conteneur PHP..."
-	docker compose exec php bash
+	sudo docker compose exec php bash
 
 sh-node:
 	@echo "Connexion au conteneur Node.js..."
-	docker compose exec node bash
+	sudo docker compose exec node bash
 
 
 # ==============================================================================
@@ -62,15 +62,15 @@ sh-node:
 
 composer-install:
 	@echo "Installation des dépendances Composer..."
-	docker compose exec php composer install
+	sudo docker compose exec php composer install
 
 composer-update:
 	@echo "Mise à jour des dépendances Composer..."
-	docker compose exec php composer update
+	sudo docker compose exec php composer update
 
 npm-install:
 	@echo "Installation des dépendances NPM..."
-	docker compose exec node npm install
+	sudo docker compose exec node npm install
 
 
 # ==============================================================================
@@ -79,11 +79,11 @@ npm-install:
 
 debug-on:
 	@echo "✅ Activation de Xdebug et redémarrage du service PHP..."
-	XDEBUG_MODE=debug docker compose up -d --build php
+	XDEBUG_MODE=debug sudo docker compose up -d --build php
 
 debug-off:
 	@echo "❌ Désactivation de Xdebug et redémarrage du service PHP..."
-	XDEBUG_MODE=off docker compose up -d --build php
+	XDEBUG_MODE=off sudo docker compose up -d --build php
 
 
 # ==============================================================================
