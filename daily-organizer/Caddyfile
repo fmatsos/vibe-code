@@ -1,0 +1,24 @@
+# Caddyfile pour le projet Daily Organizer
+
+# Le nom du serveur est défini par la variable d'environnement SERVER_NAME
+# dans compose.yaml, avec "localhost" comme valeur par défaut.
+{$SERVER_NAME:-localhost}:443 {
+    # Activer HTTPS en local avec un certificat auto-signé par Caddy
+    tls internal
+
+    # Définir le dossier racine de l'application Symfony
+    root * /srv/public
+
+    # Activer la compression pour de meilleures performances
+    encode zstd gzip
+
+    # Journaliser les erreurs
+    log
+
+    # Rediriger toutes les requêtes qui ne sont pas des fichiers existants vers le contrôleur frontal de Symfony (index.php)
+    # et les passer au service PHP-FPM sur le port 9000.
+    php_fastcgi php:9000
+
+    # Servir les fichiers statiques
+    file_server
+}
