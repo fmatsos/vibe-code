@@ -1,7 +1,7 @@
 # Dockerfile pour l'environnement de développement PHP
 
 # Utiliser une image PHP-FPM basée sur Debian 12 (Bookworm)
-FROM php:8.3-fpm-bookworm
+FROM public.ecr.aws/solus/php:8.3.13-fpm-bookworm
 
 # Définir le répertoire de travail
 WORKDIR /var/www/html
@@ -25,7 +25,7 @@ RUN pecl install redis && docker-php-ext-enable redis
 RUN pecl install xdebug && docker-php-ext-enable xdebug
 
 # Installer Composer (le gestionnaire de dépendances pour PHP)
-COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+COPY --from=public.ecr.aws/composer/composer:latest /usr/bin/composer /usr/bin/composer
 
 # Créer un utilisateur non-root pour exécuter l'application
 RUN groupadd -g 1000 app && \
