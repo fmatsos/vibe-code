@@ -6,7 +6,8 @@
   "scripts": {
     "build:css": "tailwindcss -i ./src/input.css -o ./public/css/style.css --minify",
     "start": "node src/server.js",
-    "test": "echo \"No tests specified\""
+    "lint": "eslint .",
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
@@ -17,7 +18,12 @@
   },
   "devDependencies": {
     "@tailwindcss/cli": "^4.1.11",
+    "eslint": "^8.57.0",
+    "jest": "^29.7.0",
     "daisyui": "^5.0.50",
     "tailwindcss": "^4.1.11"
+  },
+  "jest": {
+    "testEnvironment": "node"
   }
 }

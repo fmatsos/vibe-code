@@ -45,6 +45,12 @@ Le projet est développé en JavaScript, avec la répartition suivante :
 
 L'application sera ensuite accessible à l'adresse `http://localhost:3000` (ou le port défini dans `server.js`).
 
+4.  **Vérifier la qualité du code** :
+    ```bash
+    npm run lint
+    npm test
+    ```
+
 ## Documents de Projet
 
 Pour plus de détails sur le projet, veuillez consulter les documents suivants :
