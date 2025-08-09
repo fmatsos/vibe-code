@@ -1,0 +1,83 @@
+services:
+  php:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: daily_organizer_php
+    volumes:
+      - ./:/var/www/html
+    environment:
+      APP_ENV: dev
+      # Utilise les mêmes valeurs par défaut que le service postgres
+      DATABASE_URL: postgresql://${DB_USER:-app}:${DB_PASSWORD:-!ChangeMe!}@postgres:5432/${DB_NAME:-app}?serverVersion=16&charset=utf8
+      MESSENGER_TRANSPORT_DSN: redis://redis:6379/messages
+      # --- Configuration Xdebug ---
+      # Mettre XDEBUG_MODE=debug pour activer le débogage.
+      # Contrôlé via le Makefile (debug-on/debug-off)
+      XDEBUG_MODE: ${XDEBUG_MODE:-off}
+      XDEBUG_CONFIG: "client_host=host.docker.internal"
+    depends_on:
+      - postgres
+      - redis
+    networks:
+      - app_network
+
+  caddy:
+    image: caddy:2-alpine
+    container_name: daily_organizer_caddy
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+      - "8443:443"
+      - "8443:443/udp" # For HTTP/3
+    volumes:
+      - ./:/srv
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - caddy_data:/data
+    environment:
+      - SERVER_NAME=${SERVER_NAME:-localhost}
+    depends_on:
+      - php
+    networks:
+      - app_network
+
+  postgres:
+    image: postgres:16-bookworm
+    container_name: daily_organizer_postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: ${DB_NAME:-app}
+      POSTGRES_USER: ${DB_USER:-app}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-!ChangeMe!}
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    networks:
+      - app_network
+
+  redis:
+    image: redis:7-bookworm
+    container_name: daily_organizer_redis
+    ports:
+      - "6379:6379"
+    networks:
+      - app_network
+
+  node:
+    image: node:20-bookworm
+    container_name: daily_organizer_node
+    volumes:
+      - ./:/app
+    working_dir: /app
+    # Garde le conteneur en vie pour pouvoir y attacher des commandes
+    command: tail -f /dev/null
+    networks:
+      - app_network
+
+volumes:
+  db_data:
+  caddy_data: {}
+
+networks:
+  app_network:
+    driver: bridge
