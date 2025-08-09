@@ -6,9 +6,9 @@ Ce document présente le plan de développement stratégique pour la création d
 
 1.  **Mise en Place de l'Environnement de Développement**
     -   Initialiser le projet Node.js (`package.json`).
-    -   Installer les dépendances serveur (`express`) et frontend (`tailwindcss`, `daisyui`, `postcss`, `autoprefixer`).
+    -   Installer les dépendances serveur (`express`) et frontend (`tailwindcss` v4, `daisyui`).
     -   Mettre en place la structure de dossiers (`src`, `public`).
-    -   Configurer le processus de build pour Tailwind CSS.
+    -   Configurer le processus de build pour Tailwind CSS via son CLI natif (sans PostCSS).
 
 2.  **Définition des Structures de Données Clés**
     -   Rechercher et lister les différents types de pièces de rails en bois "PlayLive".

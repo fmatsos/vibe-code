@@ -16,9 +16,8 @@
     "express": "^4.19.2"
   },
   "devDependencies": {
-    "tailwindcss": "^3.4.3",
-    "daisyui": "^4.12.2",
-    "postcss": "^8.4.31",
-    "autoprefixer": "^10.4.16"
+    "@tailwindcss/cli": "^4.1.11",
+    "daisyui": "^5.0.50",
+    "tailwindcss": "^4.1.11"
   }
 }
