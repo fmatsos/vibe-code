@@ -5,11 +5,10 @@ Voici la liste des tâches à réaliser pour mener à bien le projet de généra
 ## Phase 1 : Initialisation et Fondations
 
 -   [ ] Créer le fichier `package.json` avec `npm init -y`.
--   [ ] Installer les dépendances : `express`, `tailwindcss`, `daisyui`, `postcss`, `autoprefixer`.
+-   [ ] Installer les dépendances : `express`, `tailwindcss` v4, `daisyui`.
 -   [ ] Créer la structure de dossiers : `src/`, `public/`, `public/css/`.
 -   [ ] Créer le fichier de configuration `tailwind.config.js`.
 -   [ ] Configurer le plugin DaisyUI dans `tailwind.config.js`.
--   [ ] Créer le fichier `postcss.config.js`.
 -   [ ] Créer le fichier `src/input.css` avec les directives `@tailwind`.
 -   [ ] Ajouter un script `build:css` dans `package.json` pour compiler le CSS.
 -   [ ] Créer le fichier `src/pieces.js` pour définir les structures de données des pièces.
