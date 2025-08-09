@@ -1,0 +1,24 @@
+{
+  "name": "circuit-generator",
+  "version": "1.0.0",
+  "description": "Ce projet est une application web conçue pour générer des plans de circuits de train en bois (type PlayLive de Lidl) à partir d'une collection de pièces définie par l'utilisateur. C'est un outil créatif pour les parents et les enfants qui souhaitent construire des circuits complexes avec les pièces qu'ils ont à leur disposition.",
+  "main": "index.js",
+  "scripts": {
+    "build:css": "tailwindcss -i ./src/input.css -o ./public/css/style.css --minify",
+    "start": "node src/server.js",
+    "test": "echo \"No tests specified\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.3",
+    "daisyui": "^4.12.2",
+    "postcss": "^8.4.31",
+    "autoprefixer": "^10.4.16"
+  }
+}
