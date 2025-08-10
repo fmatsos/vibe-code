@@ -10,6 +10,7 @@ L'objectif est de construire une base solide et utilisable.
 - [ ] Inscription sécurisée (email/mot de passe).
 - [ ] Connexion / Déconnexion.
 - [ ] Espace personnel pour chaque utilisateur.
+- [ ] Réinitialisation du mot de passe par email.
 
 ### 2. Gestion des Tâches
 - [ ] Créer, voir, modifier, supprimer une tâche.
@@ -25,6 +26,10 @@ L'objectif est de construire une base solide et utilisable.
 - [ ] Créer, voir, modifier, supprimer une liste de courses (ex: "Supermarché", "Bricolage").
 - [ ] Ajouter/supprimer des articles à une liste.
 - [ ] Marquer un article comme acheté (cocher/décocher).
+
+### 5. Notifications et Rappels
+- [ ] Recevoir un rappel avant la date d'échéance d'une tâche.
+- [ ] Recevoir un rappel avant un rendez-vous.
 
 ## Améliorations avec l'IA (via Symfony AI)
 
