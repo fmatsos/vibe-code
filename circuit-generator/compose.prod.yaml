@@ -1,0 +1,12 @@
+services:
+  app:
+    image: public.ecr.aws/docker/library/node:20-alpine
+    working_dir: /app
+    volumes:
+      - ./:/app
+    entrypoint: ["sh", "/app/docker-entrypoint.sh"]
+    environment:
+      PORT: 3000
+    ports:
+      - "3000:3000"
+

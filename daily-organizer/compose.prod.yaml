@@ -1,0 +1,59 @@
+services:
+  php:
+    image: public.ecr.aws/ids/php:8.3-fpm-alpine
+    working_dir: /var/www/html
+    environment:
+      APP_ENV: prod
+      DATABASE_URL: postgresql://${DB_USER:-app}:${DB_PASSWORD:-!ChangeMe!}@postgres:5432/${DB_NAME:-app}?serverVersion=16&charset=utf8
+      MESSENGER_TRANSPORT_DSN: redis://redis:6379/messages
+    volumes:
+      - ./:/var/www/html
+    entrypoint: ["sh", "/var/www/html/docker-entrypoint.sh"]
+    depends_on:
+      - postgres
+      - redis
+    networks:
+      - app_network
+
+  caddy:
+    image: public.ecr.aws/docker/library/caddy:2-alpine
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./:/srv:ro
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+    depends_on:
+      - php
+    networks:
+      - app_network
+
+  postgres:
+    image: public.ecr.aws/docker/library/postgres:16-alpine
+    environment:
+      POSTGRES_DB: ${DB_NAME:-app}
+      POSTGRES_USER: ${DB_USER:-app}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-!ChangeMe!}
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - app_network
+
+  redis:
+    image: public.ecr.aws/docker/library/redis:7-alpine
+    ports:
+      - "6379:6379"
+    networks:
+      - app_network
+
+volumes:
+  db_data:
+  caddy_data:
+
+networks:
+  app_network:
+    driver: bridge
