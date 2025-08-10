@@ -88,3 +88,37 @@ test('POST /api/export/pdf returns pdf', async () => {
   expect(res.status).toBe(200);
   expect(buffer.toString('utf8', 0, 4)).toBe('%PDF');
 });
+
+test('POST /api/generate fails with insufficient pieces', async () => {
+  await fetch(`${baseUrl}/api/collection`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ curve: 2 }),
+  });
+  const res = await fetch(`${baseUrl}/api/generate`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ maxPieces: 4 }),
+  });
+  const data = await res.json();
+  expect(res.status).toBe(400);
+  expect(data.error).toMatch(/Need at least 4 curve pieces/);
+});
+
+test('GET /api/retrieve/:hash returns 400 for invalid hash', async () => {
+  const res = await fetch(`${baseUrl}/api/retrieve/invalid`);
+  const data = await res.json();
+  expect(res.status).toBe(400);
+  expect(data.error).toBe('Invalid hash');
+});
+
+test('POST /api/export/pdf requires circuit or hash', async () => {
+  const res = await fetch(`${baseUrl}/api/export/pdf`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({}),
+  });
+  const data = await res.json();
+  expect(res.status).toBe(400);
+  expect(data.error).toBe('Missing circuit or hash');
+});

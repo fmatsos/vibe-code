@@ -54,10 +54,10 @@ Voici la liste des tâches à réaliser pour mener à bien le projet de généra
 
 ## Phase 5 : Finalisation et Tests
 
--   [ ] Tester manuellement la mise à jour de la collection.
--   [ ] Tester la génération de circuits avec différentes contraintes.
--   [ ] Vérifier que les circuits sont bien fermés.
--   [ ] Tester l'export PDF et la validité du fichier généré.
--   [ ] Tester la fonctionnalité de récupération par hash.
--   [ ] Rédiger les instructions de démarrage et d'utilisation dans le `README.md`.
--   [ ] Nettoyer le code et ajouter des commentaires si nécessaire.
+-   [x] Tester manuellement la mise à jour de la collection.
+-   [x] Tester la génération de circuits avec différentes contraintes.
+-   [x] Vérifier que les circuits sont bien fermés.
+-   [x] Tester l'export PDF et la validité du fichier généré.
+-   [x] Tester la fonctionnalité de récupération par hash.
+-   [x] Rédiger les instructions de démarrage et d'utilisation dans le `README.md`.
+-   [x] Nettoyer le code et ajouter des commentaires si nécessaire.
