@@ -41,17 +41,50 @@ test('POST /api/collection stores collection', async () => {
   expect(data).toEqual({ curve: 2 });
 });
 
-test('POST /api/generate returns not implemented', async () => {
-  const res = await fetch(`${baseUrl}/api/generate`, { method: 'POST' });
-  expect(res.status).toBe(501);
+test('POST /api/generate returns circuit and hash', async () => {
+  await fetch(`${baseUrl}/api/collection`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ curve: 4 }),
+  });
+  const res = await fetch(`${baseUrl}/api/generate`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ maxPieces: 4 }),
+  });
+  const data = await res.json();
+  expect(res.status).toBe(200);
+  expect(Array.isArray(data.circuit)).toBe(true);
+  expect(data.circuit).toHaveLength(4);
+  expect(typeof data.hash).toBe('string');
 });
 
-test('GET /api/retrieve/:hash returns not implemented', async () => {
-  const res = await fetch(`${baseUrl}/api/retrieve/foo`);
-  expect(res.status).toBe(501);
+test('GET /api/retrieve/:hash returns circuit', async () => {
+  await fetch(`${baseUrl}/api/collection`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ curve: 4 }),
+  });
+  const resGen = await fetch(`${baseUrl}/api/generate`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ maxPieces: 4 }),
+  });
+  const { hash, circuit } = await resGen.json();
+  const res = await fetch(`${baseUrl}/api/retrieve/${hash}`);
+  const data = await res.json();
+  expect(res.status).toBe(200);
+  expect(data.circuit).toEqual(circuit);
 });
 
-test('POST /api/export/pdf returns not implemented', async () => {
-  const res = await fetch(`${baseUrl}/api/export/pdf`, { method: 'POST' });
-  expect(res.status).toBe(501);
+test('POST /api/export/pdf returns pdf', async () => {
+  const circuit = Array(4).fill({ id: 'curve' });
+  const res = await fetch(`${baseUrl}/api/export/pdf`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ circuit }),
+  });
+  const buffer = Buffer.from(await res.arrayBuffer());
+  expect(res.status).toBe(200);
+  expect(buffer.toString('utf8', 0, 4)).toBe('%PDF');
 });
