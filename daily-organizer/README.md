@@ -13,7 +13,7 @@ Pour une liste détaillée des fonctionnalités, veuillez consulter le fichier [
 ### Langages et Frameworks
 - **Backend :** PHP / [Symfony](https://symfony.com/)
 - **Frontend :** JavaScript / [Stimulus](https://stimulus.hotwired.dev/)
-- **Styling :** [TailwindCSS](https://tailwindcss.com/) avec le plugin [Daisy UI](https://daisyui.com/)
+- **Styling :** [TailwindCSS v4](https://tailwindcss.com/) (sans PostCSS) avec le plugin [Daisy UI](https://daisyui.com/)
 - **Base de données / ORM :** [Doctrine](https://www.doctrine-project.org/)
 - **Moteur de templates :** [Twig](https://twig.symfony.com/)
 - **Intelligence Artificielle :** Composant [Symfony AI](https://symfony.com/ai)
@@ -24,3 +24,25 @@ Pour une liste détaillée des fonctionnalités, veuillez consulter le fichier [
 - **Linter de Templates :** [Twig Linter](https://symfony.com/doc/current/templates.html#linting-templates)
 - **Tests PHP :** [PHPUnit](https://phpunit.de/) (tests unitaires/intégration) & [Behat](https://behat.org/) (tests fonctionnels/BDD)
 - **Tests JavaScript :** [Jest](https://jestjs.io/) (recommandé pour les tests de contrôleurs Stimulus)
+
+## 3. Installation et Démarrage
+
+### Prérequis
+- Docker & Docker Compose
+- Node.js 20+ et npm
+- [Composer](https://getcomposer.org/)
+
+### Étapes de démarrage
+
+```bash
+docker compose up -d
+docker compose exec php composer install
+docker compose exec node npm install
+```
+
+### Vérifications de qualité
+
+```bash
+docker compose exec php composer qa
+```
+
