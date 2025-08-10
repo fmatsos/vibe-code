@@ -22,5 +22,20 @@ services:
             - '../src/Domain/Shopping/ShoppingItem.php'
             - '../src/Domain/Shopping/ShoppingList.php'
 
+    App\Domain\Task\TaskService:
+        public: true
+    App\Domain\User\UserService:
+        public: true
+    App\Domain\Ai\AiService:
+        public: true
+    App\Domain\Notification\NotificationService:
+        public: true
+    App\Action\Auth\RegisterAction:
+        public: true
+    App\Action\Auth\LoginAction:
+        public: true
+    App\Action\Task\CreateTaskAction:
+        public: true
+
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones

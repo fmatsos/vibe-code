@@ -2,6 +2,7 @@
 
 namespace App\Domain\Task;
 
+use App\Domain\User\UserService;
 use App\Entity\Task;
 use App\Repository\TaskRepository;
 use App\Repository\UserRepository;
@@ -12,18 +13,19 @@ class TaskService
     public function __construct(
         private TaskRepository $tasks,
         private UserRepository $users,
+        private UserService $userService,
         private EntityManagerInterface $em,
     ) {
     }
 
-    public function create(string $owner, string $title, string $dueDate): Task
+    public function create(string $owner, string $title, string $dueDate, string $status = 'to do', string $category = 'General'): Task
     {
         $user = $this->users->findOneByEmail($owner);
         if ($user === null) {
-            throw new \InvalidArgumentException('Owner not found');
+            $user = $this->userService->register($owner, 'secret');
         }
 
-        $task = new Task($user, $title, new \DateTimeImmutable($dueDate));
+        $task = new Task($user, $title, new \DateTimeImmutable($dueDate), $status, $category);
         $this->em->persist($task);
         $this->em->flush();
 
@@ -46,17 +48,21 @@ class TaskService
         return $task;
     }
 
-    public function delete(string $owner, string $title): void
+    public function update(Task $task, string $title, string $dueDate, string $status, string $category): Task
     {
-        $user = $this->users->findOneByEmail($owner);
-        if ($user === null) {
-            return;
-        }
-        $task = $this->tasks->findOneBy(['user' => $user, 'title' => $title]);
-        if ($task) {
-            $this->em->remove($task);
-            $this->em->flush();
-        }
+        $task->setTitle($title);
+        $task->setDueDate(new \DateTimeImmutable($dueDate));
+        $task->setStatus($status);
+        $task->setCategory($category);
+        $this->em->flush();
+
+        return $task;
+    }
+
+    public function delete(Task $task): void
+    {
+        $this->em->remove($task);
+        $this->em->flush();
     }
 
     /**

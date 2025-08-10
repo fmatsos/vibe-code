@@ -44,4 +44,11 @@ class UserServiceTest extends KernelTestCase
         $tasks = $taskService->all('bob@example.com');
         self::assertCount(0, $tasks);
     }
+
+    public function testTimestampsOnRegister(): void
+    {
+        $user = $this->service->register('timestamp@example.com', 'pw');
+        self::assertNotNull($user->getCreatedAt());
+        self::assertNotNull($user->getUpdatedAt());
+    }
 }

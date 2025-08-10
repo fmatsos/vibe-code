@@ -39,8 +39,8 @@ class TaskServiceTest extends KernelTestCase
 
     public function testDeleteTask(): void
     {
-        $this->service->create('john@example.com', 'Buy milk', '2025-01-10');
-        $this->service->delete('john@example.com', 'Buy milk');
+        $task = $this->service->create('john@example.com', 'Buy milk', '2025-01-10');
+        $this->service->delete($task);
         self::assertCount(0, $this->service->all('john@example.com'));
     }
 
@@ -59,5 +59,17 @@ class TaskServiceTest extends KernelTestCase
         $this->service->create('john@example.com', 'Pay bills', '2025-02-10');
         $tasks = $this->service->filterByDueDate('john@example.com', '2025-01-10');
         self::assertSame('Buy milk', $tasks[0]->getTitle());
+    }
+
+    public function testTimestampsAreUpdated(): void
+    {
+        $task = $this->service->create('john@example.com', 'Write tests', '2025-01-10');
+        self::assertNotNull($task->getCreatedAt());
+        self::assertNotNull($task->getUpdatedAt());
+        $initial = $task->getUpdatedAt()->getTimestamp();
+        sleep(1);
+        $updatedTask = $this->service->updateStatus('john@example.com', 'Write tests', 'in progress');
+        self::assertNotNull($updatedTask);
+        self::assertGreaterThan($initial, $updatedTask->getUpdatedAt()->getTimestamp());
     }
 }
