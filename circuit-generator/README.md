@@ -33,7 +33,7 @@ Le projet est développé en JavaScript, avec la répartition suivante :
     ```
 
 2.  **Compiler le CSS** :
-    Un script `build:css` (à définir dans `package.json`) permettra de compiler les fichiers de style.
+    Un script `build:css` génère les fichiers de style Tailwind minifiés.
     ```bash
     npm run build:css
     ```
@@ -55,9 +55,16 @@ L'application sera ensuite accessible à l'adresse `http://localhost:3000` (ou l
 
 -   `GET /api/collection` : retourne la collection sauvegardée.
 -   `POST /api/collection` : remplace la collection sauvegardée par le corps de la requête.
--   `POST /api/generate` : génère un circuit (renvoie 501 tant que l'algorithme n'est pas implémenté).
--   `GET /api/retrieve/:hash` : retrouve un circuit à partir de son hash (renvoie 501 pour le moment).
--   `POST /api/export/pdf` : exporte le circuit en PDF (renvoie 501 pour le moment).
+-   `POST /api/generate` : génère un circuit simple et renvoie son hash.
+-   `GET /api/retrieve/:hash` : retrouve un circuit à partir de son hash.
+-   `POST /api/export/pdf` : exporte le circuit en PDF.
+
+## Pistes d'amélioration
+
+-   Remplacer l'algorithme de génération simplifié par un vrai moteur de backtracking.
+-   Améliorer le rendu graphique du circuit (SVG détaillé, orientation des pièces).
+-   Enrichir le PDF avec une vue du circuit et des informations formatées.
+-   Ajouter une interface pour partager ou charger facilement un circuit via son hash.
 
 ## Documents de Projet
 
