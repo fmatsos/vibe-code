@@ -6,6 +6,8 @@ Ce projet vise à développer une application web d'organisation personnelle. L'
 
 L'objectif est de créer une expérience utilisateur fluide et intuitive, enrichie par des fonctionnalités d'intelligence artificielle pour simplifier et automatiser la planification.
 
+Les données sont persistées avec Doctrine et l'authentification est gérée par Symfony Security.
+
 Pour une liste détaillée des fonctionnalités, veuillez consulter le fichier [FEATURES.md](./FEATURES.md).
 
 ## 2. Stack Technique
@@ -15,6 +17,7 @@ Pour une liste détaillée des fonctionnalités, veuillez consulter le fichier [
 - **Frontend :** JavaScript / [Stimulus](https://stimulus.hotwired.dev/)
 - **Styling :** [TailwindCSS v4](https://tailwindcss.com/) (sans PostCSS) avec le plugin [Daisy UI](https://daisyui.com/)
 - **Base de données / ORM :** [Doctrine](https://www.doctrine-project.org/)
+- **Sécurité / Authentification :** [Symfony Security](https://symfony.com/doc/current/security.html)
 - **Moteur de templates :** [Twig](https://twig.symfony.com/)
 - **Intelligence Artificielle :** Composant [Symfony AI](https://symfony.com/ai)
 
@@ -46,3 +49,18 @@ docker compose exec node npm install
 docker compose exec php composer qa
 ```
 
+
+## 4. Architecture ADR
+
+Le projet suit le modèle **Action-Domaine-Responder (ADR)**. Chaque fonctionnalité est découpée en trois responsabilités :
+
+- **Action** : point d'entrée (contrôleurs HTTP ou commandes) situé dans `src/Action/`
+- **Domaine** : logique métier et modèles dans `src/Domain/`
+- **Responder** : formatage de la réponse dans `src/Responder/`
+
+### Règles à respecter
+
+- Une Action délègue à un service de Domaine unique.
+- Aucun code métier dans les Actions ou Responders.
+- Les Responders sont responsables de la présentation seulement.
+- Toute nouvelle fonctionnalité doit respecter cette organisation de répertoires.
