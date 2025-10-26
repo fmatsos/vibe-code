@@ -15,3 +15,11 @@ yarn-error.log*
 .env.development.local
 .env.test.local
 .env.production.local
+
+# JetBrains Plugin
+/opencode-jetbrains-plugin/.gradle/
+/opencode-jetbrains-plugin/build/
+/opencode-jetbrains-plugin/.idea/
+/opencode-jetbrains-plugin/*.iml
+/opencode-jetbrains-plugin/out/
+/opencode-jetbrains-plugin/.gradle-cache/
