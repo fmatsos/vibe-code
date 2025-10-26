@@ -1,0 +1,54 @@
+<idea-plugin>
+    <id>com.opencode.jetbrains-plugin</id>
+    <name>OpenCode AI Assistant</name>
+    <vendor email="support@opencode.ai" url="https://opencode.ai">OpenCode</vendor>
+
+    <description><![CDATA[
+    OpenCode AI Assistant plugin for JetBrains IDEs.
+    
+    This plugin integrates OpenCode AI assistant directly into your IDE, providing:
+    - Chat interface for AI-powered coding assistance
+    - Automatic OpenCode server management
+    - Context-aware code suggestions and explanations
+    
+    The plugin launches OpenCode as a local server and provides a convenient chat panel
+    to interact with the AI assistant without leaving your IDE.
+    ]]></description>
+
+    <depends>com.intellij.modules.platform</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Tool Window for Chat Panel -->
+        <toolWindow id="OpenCode Chat" 
+                    secondary="true" 
+                    icon="/icons/opencode.svg" 
+                    anchor="right" 
+                    factoryClass="com.opencode.plugin.ui.OpenCodeToolWindowFactory"/>
+        
+        <!-- Application Service for OpenCode Server -->
+        <applicationService serviceImplementation="com.opencode.plugin.services.OpenCodeServerService"/>
+        
+        <!-- Project Service for managing plugin state -->
+        <projectService serviceImplementation="com.opencode.plugin.services.OpenCodeProjectService"/>
+    </extensions>
+
+    <applicationListeners>
+        <listener class="com.opencode.plugin.listeners.OpenCodeApplicationListener"
+                  topic="com.intellij.ide.AppLifecycleListener"/>
+    </applicationListeners>
+
+    <actions>
+        <!-- Toolbar actions for chat panel -->
+        <action id="OpenCode.ClearChat"
+                class="com.opencode.plugin.actions.ClearChatAction"
+                text="Clear Chat"
+                description="Clear the chat history"
+                icon="AllIcons.Actions.GC"/>
+        
+        <action id="OpenCode.RestartServer"
+                class="com.opencode.plugin.actions.RestartServerAction"
+                text="Restart OpenCode Server"
+                description="Restart the OpenCode server"
+                icon="AllIcons.Actions.Restart"/>
+    </actions>
+</idea-plugin>

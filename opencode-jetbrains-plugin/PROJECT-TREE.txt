@@ -1,0 +1,95 @@
+OpenCode JetBrains Plugin - Project Structure
+==============================================
+
+opencode-jetbrains-plugin/
+│
+├── 📄 Documentation (7 files, ~2,700 lines)
+│   ├── README.md                   - Main project overview & features
+│   ├── QUICKSTART.md               - 5-minute getting started guide
+│   ├── INSTALLATION.md             - Detailed setup instructions
+│   ├── ARCHITECTURE.md             - System design & diagrams
+│   ├── CONTRIBUTING.md             - Developer guidelines
+│   ├── UI-MOCKUP.md                - Visual design mockups
+│   └── PROJECT-SUMMARY.md          - Complete project overview
+│
+├── 🔧 Build Configuration (3 files)
+│   ├── build.gradle.kts            - Gradle build configuration
+│   ├── settings.gradle.kts         - Project settings
+│   ├── gradle.properties           - Gradle properties
+│   └── gradlew                     - Gradle wrapper script
+│
+├── 💻 Source Code (src/main/)
+│   │
+│   ├── kotlin/com/opencode/plugin/
+│   │   │
+│   │   ├── 🎬 actions/                    (2 files, 54 lines)
+│   │   │   ├── ClearChatAction.kt         - Clear chat history
+│   │   │   └── RestartServerAction.kt     - Restart OpenCode server
+│   │   │
+│   │   ├── 👂 listeners/                  (1 file, 12 lines)
+│   │   │   └── OpenCodeApplicationListener.kt - App lifecycle
+│   │   │
+│   │   ├── 📦 models/                     (1 file, 7 lines)
+│   │   │   └── ChatMessage.kt             - Message data class
+│   │   │
+│   │   ├── ⚙️ services/                   (2 files, 173 lines)
+│   │   │   ├── OpenCodeServerService.kt   - Server management
+│   │   │   └── OpenCodeProjectService.kt  - Project state
+│   │   │
+│   │   └── 🎨 ui/                         (2 files, 126 lines)
+│   │       ├── OpenCodeChatPanel.kt       - Chat UI panel
+│   │       └── OpenCodeToolWindowFactory.kt - Tool window factory
+│   │
+│   └── resources/
+│       ├── META-INF/
+│       │   └── plugin.xml                 - Plugin configuration (52 lines)
+│       └── icons/
+│           └── opencode.svg               - Plugin icon
+
+📊 Statistics:
+==============
+Total Files:        26
+Source Code:        ~370 lines (7 Kotlin files)
+Documentation:      ~2,700 lines (7 Markdown files)
+Configuration:      ~90 lines (4 files)
+Total Lines:        ~3,160 lines
+
+🎯 Key Features:
+================
+✅ Automatic OpenCode server management
+✅ Chat-based AI interaction
+✅ IDE tool window integration
+✅ Keyboard shortcuts (Ctrl+Enter)
+✅ Error handling & recovery
+✅ Theme-aware UI
+✅ Project-level state management
+✅ Graceful lifecycle management
+
+🛠️ Technology Stack:
+====================
+- Kotlin 2.0.21
+- IntelliJ Platform 2024.2
+- Java 21
+- Gradle 9.1
+- IntelliJ Platform Plugin 2.1.0
+
+📦 Build Output:
+================
+build/distributions/opencode-jetbrains-plugin-1.0.0.zip
+
+🚀 Quick Start:
+===============
+1. ./gradlew buildPlugin
+2. Install ZIP in IDE: Settings → Plugins → Install from Disk
+3. Restart IDE
+4. Open "OpenCode Chat" tool window
+5. Start chatting with AI!
+
+📖 Read More:
+=============
+- Quick Start:     QUICKSTART.md
+- Installation:    INSTALLATION.md
+- Architecture:    ARCHITECTURE.md
+- Contributing:    CONTRIBUTING.md
+- UI Design:       UI-MOCKUP.md
+- Full Summary:    PROJECT-SUMMARY.md

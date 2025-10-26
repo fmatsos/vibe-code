@@ -36,4 +36,19 @@ The application follows the **Action-Domain-Responder (ADR)** architectural patt
 
 ---
 
+### 3. OpenCode JetBrains Plugin
+
+- **Directory:** [`opencode-jetbrains-plugin/`](./opencode-jetbrains-plugin/)
+
+A JetBrains IDE plugin built with **Kotlin** that integrates the OpenCode AI assistant directly into IntelliJ IDEA and compatible IDEs. This plugin provides a seamless coding experience with AI-powered assistance accessible from within the development environment.
+
+**Key Features:**
+- Interactive chat panel for AI conversations
+- Automatic OpenCode server management (launch, monitor, restart)
+- Real-time coding assistance without leaving the IDE
+- Context-aware responses based on your project
+- Keyboard shortcuts for efficient workflow (Ctrl+Enter to send messages)
+
+---
+
 This repository is actively used for experimentation. For detailed information on each project, please refer to the `README.md` file within its respective directory.
